@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    public string name;
-    public string typeOfPickup;
-    public string description;
+    public int health;
 
-    public int amount;
-    public int value; 
 
 
     // Start is called before the first frame update
@@ -22,9 +18,10 @@ public class Pickup : MonoBehaviour
     void Update()
     {
         
-
     }
-    
 
-
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }
