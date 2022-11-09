@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 283697135}
   - component: {fileID: 283697134}
   - component: {fileID: 283697133}
+  - component: {fileID: 283697138}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -550,6 +551,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283697138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283697132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9258184b9a54c1c90965573a655415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  deathDelay: 0.5
 --- !u!1 &321878755
 GameObject:
   m_ObjectHideFlags: 3
@@ -658,7 +674,7 @@ GameObject:
   - component: {fileID: 371224100}
   - component: {fileID: 371224104}
   m_Layer: 0
-  m_Name: MagicProjectile
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371224099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.444, y: 1.546, z: 0}
+  m_LocalPosition: {x: 0.66, y: 1.98, z: 0}
   m_LocalScale: {x: 0.45793, y: 0.45793, z: 0.45793}
   m_Children: []
   m_Father: {fileID: 0}
@@ -789,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  damage: 1
 --- !u!1 &427942019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,6 +2170,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6974721581963034922, guid: f27020130fd3344b8bfcf000ffdf2bc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974721581963034925, guid: f27020130fd3344b8bfcf000ffdf2bc3, type: 3}
+      propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6974721581963034927, guid: f27020130fd3344b8bfcf000ffdf2bc3, type: 3}
