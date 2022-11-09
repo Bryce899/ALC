@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if (transform.position.x == target.x && transform.position.y == target.y)// Once target has been reached destroy projectile kaboom
+        if (transform.position.x == target.x && transform.position.y == target.y)// Once target has been reached remove projectile abra kadbra
         {
             DestroyProjectile();
         }
@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))// Destroy projectile when it hits the player
+        if (other.CompareTag("Player"))// Removes projectile when it hits the player
         {
             DestroyProjectile();
         }
