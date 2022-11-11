@@ -16,13 +16,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackDelay <= 0)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.F))
             {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-
+                // starting value
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    enemiesToDamage[i].GetComponent<enemeyHealth>().TakeDamage(damage);
                 }
             }
 
@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            attackDelay -= Time.deltaTime;
+            attackDelay -= Time.deltaTime;// resets the delay
         }
     }
 

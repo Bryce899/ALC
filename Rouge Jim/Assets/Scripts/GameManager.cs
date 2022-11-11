@@ -21,6 +21,6 @@ public class GameManager : MonoBehaviour
     public void AddKey(int amount)
     {
         key += amount; // adds keys
-        Debug.Log("Keys = " + key);//makes message showing amount of keys
+        Debug.Log("Key = " + key);//makes message showing amount of keys
     }
 }

@@ -23,8 +23,7 @@ public class enemeyHealth : MonoBehaviour
 
         if (currentHealth <= 0)// Has the player expired like cereal 
         {
-            Debug.Log("Enemy has Died! Game Over!");
-            Time.timeScale = 0;
+            Debug.Log("Enemy has Died!");
             Destroy(gameObject, deathDelay);
         }
     }

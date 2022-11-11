@@ -16,7 +16,7 @@ public class MoveAndShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("player").GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         shotDelay = startDelay;
         
     }
@@ -34,7 +34,7 @@ public class MoveAndShoot : MonoBehaviour
         }
         else if(Vector2.Distance(transform.position, target.position) < retreatDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);// RUNN AWAY!!!!
+            transform.position = Vector2.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);// Get out of da there
         }
 
         // Ranged attack
