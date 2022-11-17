@@ -11,7 +11,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth; 
+        currentHealth = maxHealth;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -26,7 +27,8 @@ public class Health : MonoBehaviour
 
         if(currentHealth <= 0)// Has the player expired like cereal 
         {
-            Destroy(gameObject, deathDelay);
+            Debug.Log("Player has Died Get better! Gameover");
+            Time.timeScale = 0f;
         }
     }
 
