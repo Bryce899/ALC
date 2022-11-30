@@ -11,7 +11,7 @@ public class FpsController : MonoBehaviour
     public float lookSensitivity;// mouse look sensitivity
     public float maxLookX;// Lowest point you can look down
     public float minLookX;//Highest point you can look up
-    public float rotX;// Current x rotation of the camera
+    private float rotX;// Current x rotation of the camera
     [Header("Private Variables")]
     private Camera camera;// references the main camera
     private Rigidbody rb;// reference the rigidbody compoent
@@ -28,6 +28,8 @@ public class FpsController : MonoBehaviour
         //Getcompoents
         camera = Camera.main;
         rb = GetComponent<Rigidbody>();
+        //Freeze and awake
+        Cursor.lockState = CursorLockMode.Locked;
         
     }
 
@@ -35,6 +37,10 @@ public class FpsController : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        CameraLook();
+
+        if (Input.GetButtonDown("Jump"))
+            PlayerJump();
     }
 
     void PlayerMove()
@@ -42,14 +48,32 @@ public class FpsController : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * moveSpeed;//Move left and right input
         float z = Input.GetAxis("Vertical") * moveSpeed;//Move foward and back  input
 
-        rb.velocity = new Vector3(x, rb.velocity.y, z); // Applys velocity on x and z axes. It makes it move
+        Vector3 dir = transform.right * x + transform.forward * z;
+        dir.y = rb.velocity.y;
+
+        rb.velocity = dir; // Applys velocity on x and z axes. It makes it move
 
 
     }
 
     void CameraLook()
     {
-        float y = Input.GetAxis("Mouse x") * lookSensitivity;
-        rotX += Input.GetAxis("Mouse y") * lookSensitivity;
+        float y = Input.GetAxis("Mouse X") * lookSensitivity;
+        rotX += Input.GetAxis("Mouse Y") * lookSensitivity;
+
+        rotX = Mathf.Clamp(rotX, minLookX, maxLookX);// clamp the vertical rotation of the player so he doesent do weird camera angle flips
+        //apply rotation to the player
+        camera.transform.localRotation = Quaternion.Euler(-rotX, 0, 0);
+        transform.eulerAngles += Vector3.up * y;
+    }
+
+    void PlayerJump()
+    {
+        //ground detection
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, 1.1f))
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+      
     }
 }
