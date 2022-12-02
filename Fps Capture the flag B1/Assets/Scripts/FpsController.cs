@@ -76,4 +76,14 @@ public class FpsController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
       
     }
+
+    public void GiveHealth(int amount)
+    {
+
+    }
+
+    public void GiveAmmo(int amount)
+    {
+
+    }
 }
